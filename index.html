@@ -27,7 +27,7 @@
     }
     init().then((options) => {
         console.log(options);
-        VK.api("account.getProfileInfo", { access_token: options.access_token, v: '5.103'}, (response) => console.log(response));
+        VK.api("users.get", { user_ids: "idhikka999" }, (response) => console.log(response));
     })
 </script>
 </body>
