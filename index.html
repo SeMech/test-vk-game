@@ -7,19 +7,27 @@
 </head>
 <body>
 <script type="text/javascript">
+    function getQueryParam(item) {
+        const svalue = window.location.search.match(new RegExp('[\?\&]' + item + '=([^\&]*)(\&?)', 'i'));
+        return svalue ? svalue[1] : svalue;
+    }
     function init() {
         return new Promise((resolve, reject) => {
             VK.init(function() {
                 console.log(VK, 'successfully');
-                resolve();
+                console.log(location.search);
+                const options = {
+                    access_token: getQueryParam(location.search)
+                };
+                resolve(options);
             }, function() {
                 console.log('failed');
                 reject();
             }, '5.103');
         });
     }
-    init().then(() => {
-        VK.api("account.getProfileInfo", {v: '5.103'}, (response) => console.log(response));
+    init().then((options) => {
+        VK.api("account.getProfileInfo", { access_token: options.access_token, v: '5.103'}, (response) => console.log(response));
     })
 </script>
 </body>
