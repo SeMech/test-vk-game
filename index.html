@@ -17,7 +17,7 @@
                 console.log(VK, 'successfully');
                 console.log(location.search);
                 const options = {
-                    access_token: getQueryParam("access_token");
+                    access_token: getQueryParam("access_token"),
                 };
                 resolve(options);
             }, function() {
