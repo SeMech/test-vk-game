@@ -6,16 +6,21 @@
     <script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
 </head>
 <body>
-<div onclick="getInfo()">получить инфу об аккаунте</div>
 <script type="text/javascript">
-    VK.init(function() {
-        console.log(VK, 'successfully')
-    }, function() {
-        console.log('failed')
-    }, '5.103');
-    const getInfo = () => {
-        console.log(VK.api())
+    function init() {
+        return new Promise((resolve, reject) => {
+            VK.init(function() {
+                console.log(VK, 'successfully');
+                resolve();
+            }, function() {
+                console.log('failed');
+                reject();
+            }, '5.103');
+        });
     }
+    init().then(() => {
+        console.log(VK.api());
+    })
 </script>
 </body>
 </html>
