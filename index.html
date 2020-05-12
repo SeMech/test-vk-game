@@ -19,7 +19,7 @@
         });
     }
     init().then(() => {
-        VK.api("account.getInfo", {}, (response) => console.log(response));
+        VK.api("account.getProfileInfo", {v: '5.103'}, (response) => console.log(response));
     })
 </script>
 </body>
