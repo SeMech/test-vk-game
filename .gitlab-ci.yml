@@ -13,6 +13,6 @@ build:
 deploy:
   stage: deploy
   script:
-    - cp -rv build/* /var/www/hello
+    - cp -rv public/* /var/www/hello
   only:
     - master
