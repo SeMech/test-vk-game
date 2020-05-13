@@ -1,0 +1,16 @@
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script:
+    - yarn install
+    - yarn build
+
+deploy:
+  stage: deploy
+  script:
+    - cp -rv build/* /var/www/hello
+  only:
+    - master
